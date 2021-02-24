@@ -26,18 +26,16 @@ int main (int argc, char* argv[])
     bdd x7_bar = bdd_not(bddm, x7);
     bdd x8_bar = bdd_not(bddm, x8);
 
-    // Compute f = (x1.x2.(~x3) + x4.x5 + (~x6).x7 + x8)
+    // Compute f = x1.x2 + x3.x4 + x5.x6 + x7.x8
     bdd f_1 = bdd_and(bddm, x1, x2);
-    bdd f_2 = bdd_and(bddm, f_1, x3_bar);
+    bdd f_2 = bdd_and(bddm, x3, x4);
+    bdd f_3 = bdd_and(bddm, x5, x6);
+    bdd f_4 = bdd_and(bddm, x7, x8);
 
-    bdd f_3 = bdd_and(bddm, x4, x5);
+    bdd f_5 = bdd_or(bddm, f_1, f_2);
+    bdd f_6 = bdd_or(bddm, f_3, f_4);
 
-    bdd f_4 = bdd_and(bddm, x6_bar, x7);
-
-    bdd f_5 = bdd_or(bddm, f_2, f_3);
-    bdd f_6 = bdd_or(bddm, f_5, f_4);
-
-    bdd f = bdd_or(bddm, f_6, x8);
+    bdd f = bdd_or(bddm, f_5, f_6);
 
 
     // Compute g = x1.x5  + x2.x6 + x3.x7 + x4.x8

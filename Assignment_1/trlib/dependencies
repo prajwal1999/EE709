@@ -1,5 +1,0 @@
-tr.o: tr.c truser.h \
- /home/prajwal/Public/EE709/Assignment_1/include/bdduser.h \
- /home/prajwal/Public/EE709/Assignment_1/include/memuser.h vec.h
-vec.o: vec.c /home/prajwal/Public/EE709/Assignment_1/include/memuser.h \
- vec.h
